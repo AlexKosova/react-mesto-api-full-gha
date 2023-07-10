@@ -1,0 +1,19 @@
+.popup__title {
+  align-self: flex-start;
+  margin: 0;
+  font-size: 24px;
+  font-family: 'Inter', Courier, monospace;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 358px;
+  font-weight: 900;
+  cursor: default;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__title {
+    min-width: 238px;
+    font-size: 18px;
+    margin-top: 5px;
+    }
+  }

@@ -1,0 +1,18 @@
+.element__button-like {
+  grid-area: info-card;
+  padding: 0;
+  min-width: 22px;
+  min-height: 19px;
+  background-image: url(../../../images/like.svg);
+  margin-top: 20px;
+  margin-bottom: auto;
+  margin-right: 20px;
+  margin-left: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.element__button-like:hover {
+  opacity: .5;
+}

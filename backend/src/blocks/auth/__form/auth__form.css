@@ -1,0 +1,10 @@
+.auth__form {
+  margin-top: 60px;
+  display: grid;
+  grid-template-areas: "title" "inputs" "button";
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 425px;
+  width: 358px;
+}

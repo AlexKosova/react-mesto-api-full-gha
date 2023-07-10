@@ -1,0 +1,14 @@
+.popup__confirm-button {
+  margin-top: 38px;
+  min-width: 358px;
+  min-height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 2px;
+  font-size: 18px;
+  line-height: 100%;
+  font-weight: 400;
+  font-family: 'Inter', Courier, monospace;
+  cursor: pointer;
+  border: none;
+}

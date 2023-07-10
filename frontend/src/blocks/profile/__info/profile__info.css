@@ -1,0 +1,13 @@
+.profile__info {
+  display: grid;
+  margin: auto 0;
+  grid-template-areas: "name edit"
+  "description description";
+}
+
+@media screen and (max-width: 767px) {
+  .profile__info {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,14 @@
+.element__likeQuantity {
+  grid-area: info-card;
+  color: black;
+  font-family: 'Inter', Courier, monospace;
+  font-size: 13px;
+  line-height: 1.2;
+  min-width: 22px;
+  min-height: 13px;
+  align-self: center;
+  margin-left: auto;
+  margin-top: auto;
+  margin-right: 12px;
+  margin-bottom: 15px;
+}

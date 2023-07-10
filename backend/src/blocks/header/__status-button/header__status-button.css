@@ -1,0 +1,15 @@
+.header__status-button {
+  font-family: 'Inter', Courier, monospace;
+  color: white;
+  font-size: 18px;
+  line-height: 181%;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  margin: auto;
+  margin-right: 0;
+}
+
+.header__status-button:hover {
+  opacity: .6;
+}
