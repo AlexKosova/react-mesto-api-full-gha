@@ -16,7 +16,7 @@ app.use(errors());
 app.use(errorMiddlware);
 
 async function connect() {
-  await mongoose.connect('mongodb://51.250.22.154/mestodb');
+  await mongoose.connect('mongodb://0.0.0.0:27017/mestodb');
   app.listen(PORT,
   //    () => {
   //   console.log('Сервер запущен');
