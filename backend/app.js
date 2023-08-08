@@ -5,7 +5,7 @@ const errorMiddlware = require('./middlewares/errors');
 const routes = require('./routes/routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 app.use(requestLogger);
 
@@ -16,7 +16,7 @@ app.use(errors());
 app.use(errorMiddlware);
 
 async function connect() {
-  await mongoose.connect('mongodb://0.0.0.0:27017/mestodb');
+  await mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
   app.listen(PORT,
   //    () => {
   //   console.log('Сервер запущен');

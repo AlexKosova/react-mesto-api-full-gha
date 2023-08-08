@@ -1,0 +1,17 @@
+.auth__postscriptLink {
+  font-family: 'Inter', Courier, monospace;
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: 400;
+  padding: 0;
+  height: 27px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.auth__postscriptLink:hover {
+  opacity: .85;
+  cursor: pointer;
+}

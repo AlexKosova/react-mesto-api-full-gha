@@ -1,22 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 export default function AddPlacePopup ({
   isOpened,
   onClose,
   onOverlayClick,
-  onAddPlace
+  onAddPlace,
+  buttonText
 }) {
   
   const [name, setName] = React.useState('');
   const [link, setLink] = React.useState('');
-  const [buttonText, setButtonText] = React.useState('Создать')
 
   React.useEffect(() => {
     setName('');
     setLink('');
-    setButtonText('Создать')
-
   },[isOpened])
 
   function handleName (e) {
@@ -29,7 +27,6 @@ export default function AddPlacePopup ({
 
   function handleSubmit (e) {
     e.preventDefault();
-    setButtonText('Создаём...')
     onAddPlace({name, link})
   }
 

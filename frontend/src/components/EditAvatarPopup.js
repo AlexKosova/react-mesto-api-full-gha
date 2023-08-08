@@ -5,13 +5,10 @@ export default function EditAvatarPopup ({
   isOpened,
   onClose,
   onOverlayClick,
-  onUpdateAvatar
+  onUpdateAvatar,
+  buttonText
 }) {
-
-  const [buttonText, setButtonText] = React.useState('Сохранить')
-
   React.useEffect(() => {
-    setButtonText('Сохранить');
     inputRef.current.value = ''
   }, [isOpened])
 
@@ -19,7 +16,6 @@ export default function EditAvatarPopup ({
 
   function handleSubmit (e) {
     e.preventDefault();
-    setButtonText('Сохраняем...')
     onUpdateAvatar(inputRef.current.value);
   };
 

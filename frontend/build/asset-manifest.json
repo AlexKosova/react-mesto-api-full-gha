@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1c2d306b.css",
+    "main.js": "/static/js/main.b195c49a.js",
+    "static/js/787.5530211c.chunk.js": "/static/js/787.5530211c.chunk.js",
+    "static/media/Inter-Black.woff?v=3.19": "/static/media/Inter-Black.fd37f7e052bea1018058.woff",
+    "static/media/Inter-Black.woff2?v=3.19": "/static/media/Inter-Black.141c7af6ed109b318513.woff2",
+    "static/media/Inter-Bold.woff?v=3.19": "/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Bold.woff2?v=3.19": "/static/media/Inter-Bold.ec64ea577b0349e055ad.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/static/media/logo.1f1e95914acec5e332361dc22eb8f9b2.svg",
+    "static/media/like.svg": "/static/media/like.87ed371465c7a6a1cd01.svg",
+    "static/media/failImg.svg": "/static/media/failImg.df8eddf661ff88f2d0efd3d570d14309.svg",
+    "static/media/delete-trash.svg": "/static/media/delete-trash.823b0cf1b0b7e9cb7cad.svg",
+    "static/media/successImg.svg": "/static/media/successImg.1b6082f862eac35e2514460237d96ecc.svg",
+    "static/media/like-active.svg": "/static/media/like-active.fe17a515669479b1e649.svg",
+    "index.html": "/index.html",
+    "static/media/cross-cancel.svg": "/static/media/cross-cancel.ad98de32e342afafa118.svg",
+    "static/media/edit__button.svg": "/static/media/edit__button.8667ac4a523e8fc42e59.svg",
+    "static/media/edit-photo.svg": "/static/media/edit-photo.a086f758840ae814ecde.svg",
+    "static/media/add_button.svg": "/static/media/add_button.d86bb2edc2f6eadb96b7.svg",
+    "main.1c2d306b.css.map": "/static/css/main.1c2d306b.css.map",
+    "main.b195c49a.js.map": "/static/js/main.b195c49a.js.map",
+    "787.5530211c.chunk.js.map": "/static/js/787.5530211c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c2d306b.css",
+    "static/js/main.b195c49a.js"
+  ]
+}
