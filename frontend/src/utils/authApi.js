@@ -27,13 +27,15 @@ class AuthApi {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      credentials: 'include'
     })
   }
 
   getToken (token) {
     return this._request(`${this._url}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
         "Authorization" : `Bearer ${token}`
@@ -43,7 +45,9 @@ class AuthApi {
 }
 
 const authApi = new AuthApi ({
-  baseUrl: "https://auth.nomoreparties.co"
+  baseUrl: "http://127.0.0.1:3001"
 })
 
 export default authApi
+
+// "https://auth.nomoreparties.co"

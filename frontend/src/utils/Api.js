@@ -14,7 +14,8 @@ class Api {
 
   getInitialCards() {
     return this._request(`${this._url}/cards`, {
-    headers: this._headers
+    headers: this._headers,
+    credentials: 'include'
     })
   }
 
@@ -22,6 +23,7 @@ class Api {
     return this._request(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: inputValue.name,
         about: inputValue.about
@@ -31,13 +33,15 @@ class Api {
 
   getUserInfo() {
     return this._request(`${this._url}/users/me`, {
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include'
     })
   }
 
   addCard ({name, link}) {
     return this._request(`${this._url}/cards`, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -55,7 +59,8 @@ class Api {
     } else {
       return this._request(`${this._url}/cards/likes/${cardId}`, {
         method: 'DELETE',
-        headers: this._headers
+        headers: this._headers,
+        credentials: 'include'
       })
     }
   }
@@ -63,9 +68,10 @@ class Api {
   editPhoto (link) {
     return this._request(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: link
+        avatar: link,
       })
     })
   }
@@ -73,12 +79,13 @@ class Api {
   deleteCard (cardId) {
     return this._request(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     });
   }
 }
 
-const api = new Api ({ baseUrl: "https://localhost:3001",
+const api = new Api ({ baseUrl: "http://127.0.0.1:3001",
 headers: {
   authorization: "fb85a167-fa0c-4b77-b6c4-6e80ca894d63",
   "Content-Type": "application/json",
