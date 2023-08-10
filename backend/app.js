@@ -5,16 +5,13 @@ const errorMiddlware = require('./middlewares/errors');
 const routes = require('./routes/routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = [
-  'https://mesto.nomoreparties.co/v1/cohort-62',
-  'https://auth.nomoreparties.co',
+  'http://mesto.alexkosova.nomoredomains.work/',
+  'http://api.mesto.alexkosova.nomoredomains.work/',
   'http://127.0.0.1:3000',
 ];
 
 const { PORT = 3001 } = process.env;
 const app = express();
-app.use(requestLogger);
-
-app.use(express.json());
 
 app.use((req, res, next) => {
   const { origin } = req.headers;
@@ -38,6 +35,9 @@ app.use((req, res, next) => {
 
   return next();
 });
+
+app.use(requestLogger);
+app.use(express.json());
 
 app.use(routes);
 app.use(errorLogger);

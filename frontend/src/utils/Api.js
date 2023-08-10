@@ -85,7 +85,7 @@ class Api {
   }
 }
 
-const api = new Api ({ baseUrl: "http://127.0.0.1:3001",
+const api = new Api ({ baseUrl: "http://mesto.alexkosova.nomoredomains.work/",
 headers: {
   authorization: "fb85a167-fa0c-4b77-b6c4-6e80ca894d63",
   "Content-Type": "application/json",

@@ -45,7 +45,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi ({
-  baseUrl: "http://127.0.0.1:3001"
+  baseUrl: "http://mesto.alexkosova.nomoredomains.work/"
 })
 
 export default authApi
