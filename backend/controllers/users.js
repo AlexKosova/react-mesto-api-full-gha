@@ -28,7 +28,7 @@ const createUser = (req, res, next) => {
         password: hash,
       }),
     )
-    .then((user) => res.send(user))
+    .then((user) => res.send(user.toJSON()))
     // eslint-disable-next-line consistent-return
     .catch((err) => {
       if (err.code === 11000) {
@@ -48,11 +48,13 @@ const login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, JWT_KEY, {
         expiresIn: '7d',
       });
-      res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-      }).send({ token });
-    }).catch(next);
+    //   res.cookie('jwt', token, {
+    //     maxAge: 3600000 * 24 * 7,
+    //     httpOnly: true,
+    //   }).send({ token });
+    });
+    res.send({ token })
+    .catch(next)
 };
 
 const getUserById = (req, res, next) => {

@@ -6,8 +6,9 @@ const routes = require('./routes/routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const allowedCors = [
   'http://mesto.alexkosova.nomoredomains.work/',
-  'http://api.mesto.alexkosova.nomoredomains.work/',
-  'http://127.0.0.1:3000',
+  'https://mesto.alexkosova.nomoredomains.work/',
+  'http://127.0.0.1:3001',
+  'http://localhost:3001',
 ];
 
 const { PORT = 3001 } = process.env;
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials');
   }
 
   const { method } = req;
@@ -46,12 +48,7 @@ app.use(errorMiddlware);
 
 async function connect() {
   await mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
-  app.listen(PORT,
-  //    () => {
-  //   console.log('PORT');
-  // }
-  // eslint-disable-next-line function-paren-newline
-  );
+  app.listen(PORT);
 }
 
 connect();

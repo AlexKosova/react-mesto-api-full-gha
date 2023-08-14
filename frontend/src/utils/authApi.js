@@ -11,13 +11,16 @@ class AuthApi {
     })
   }
 
-  register (data) {
+  register (email, password) {
     return this._request(`${this._url}/signup`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      })
     })
   }
 
@@ -28,7 +31,6 @@ class AuthApi {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data),
-      credentials: 'include'
     })
   }
 
@@ -45,9 +47,10 @@ class AuthApi {
 }
 
 const authApi = new AuthApi ({
-  baseUrl: "http://mesto.alexkosova.nomoredomains.work/"
+  baseUrl: "http://127.0.0.1:3001"
 })
 
 export default authApi
 
 // "https://auth.nomoreparties.co"
+// http://mesto.alexkosova.nomoredomains.work/"

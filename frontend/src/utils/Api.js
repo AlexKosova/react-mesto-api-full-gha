@@ -85,9 +85,9 @@ class Api {
   }
 }
 
-const api = new Api ({ baseUrl: "http://mesto.alexkosova.nomoredomains.work/",
+const api = new Api ({ baseUrl: "http://127.0.0.1:3001",
 headers: {
-  authorization: "fb85a167-fa0c-4b77-b6c4-6e80ca894d63",
+  authorization: `Bearer ${localStorage.getItem("jwt")}`,
   "Content-Type": "application/json",
 },})
 
