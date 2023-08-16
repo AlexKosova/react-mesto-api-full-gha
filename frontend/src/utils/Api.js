@@ -14,8 +14,8 @@ class Api {
 
   getInitialCards() {
     return this._request(`${this._url}/cards`, {
+    method: 'GET',
     headers: this._headers,
-    credentials: 'include'
     })
   }
 
@@ -23,7 +23,6 @@ class Api {
     return this._request(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
-      credentials: 'include',
       body: JSON.stringify({
         name: inputValue.name,
         about: inputValue.about
@@ -34,14 +33,12 @@ class Api {
   getUserInfo() {
     return this._request(`${this._url}/users/me`, {
       headers: this._headers,
-      credentials: 'include'
     })
   }
 
   addCard ({name, link}) {
     return this._request(`${this._url}/cards`, {
       method: 'POST',
-      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
@@ -50,25 +47,16 @@ class Api {
       })
   }
 
-  changeLikeCardStatus (cardId, isLiked) {
-    if (isLiked) {
-      return this._request(`${this._url}/cards/likes/${cardId}`, {
-        method: 'PUT',
+  changeLikeCardStatus (card, likeMethod) {
+      return this._request(`${this._url}/cards/${card._id}/likes`, {
+        method: likeMethod,
         headers: this._headers
       })
-    } else {
-      return this._request(`${this._url}/cards/likes/${cardId}`, {
-        method: 'DELETE',
-        headers: this._headers,
-        credentials: 'include'
-      })
-    }
   }
 
   editPhoto (link) {
     return this._request(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar: link,
@@ -77,15 +65,16 @@ class Api {
   }
 
   deleteCard (cardId) {
+    console.log(cardId)
     return this._request(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
-      credentials: 'include',
     });
   }
 }
 
-const api = new Api ({ baseUrl: "http://127.0.0.1:3001",
+const api = new Api ({ 
+  baseUrl: "https://api.mesto.alexkosova.nomoredomains.work",
 headers: {
   authorization: `Bearer ${localStorage.getItem("jwt")}`,
   "Content-Type": "application/json",

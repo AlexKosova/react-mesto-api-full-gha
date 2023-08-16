@@ -5,7 +5,6 @@ import api from "../utils/Api";
 import authApi from '../utils/authApi';
 import {Route, Routes, useNavigate} from 'react-router-dom';
 
-
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -70,7 +69,7 @@ export default function App () {
         Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, items]) => {
         setCurrentUser(userData)
-        setCards(items)
+        setCards(items.reverse())
         setLoggedIn(true)
         navigate('/')
       })
@@ -87,7 +86,7 @@ export default function App () {
         if (res) {
           setLoggedIn(true)
           navigate('/')
-          setEmail(res.data.email)
+          setEmail(res.email)
         }
       })
       .catch((err) => {
@@ -138,9 +137,10 @@ export default function App () {
   })
 
   function handleCardLike (card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
+    const likeMethod = isLiked ? "DELETE" : "PUT"
 
-    api.changeLikeCardStatus(card._id, !isLiked)
+    api.changeLikeCardStatus(card, likeMethod)
     .then((newCard) => {
       setCards(cards.map((c) => c._id === card._id ? newCard : c))
     })
@@ -150,9 +150,12 @@ export default function App () {
   }
 
   function handleCardDelete (card) {
-    api.deleteCard(card._id).then(() => {
-      setCards(cards.filter((c) => c._id !== card._id))
-      }).catch((err) => {
+    api.deleteCard(card._id)
+    .then(
+      () => {
+      setCards(cards.filter((c) => c._id !== card._id));
+    }
+      ).catch((err) => {
         console.log(err);})
   }
 
@@ -200,7 +203,7 @@ export default function App () {
         <Routes>
           <Route path="/" element={
             <ProtectedRoute 
-          loggedIn={isLoggedIn}
+          isLoggedIn={isLoggedIn}
           Component={Main}
           isEditProfilePopupOpen = {false}
           isAddPlacePopupOpen = {false}
@@ -231,7 +234,6 @@ export default function App () {
         onUpdateAvatar={handleUpdateAvatar}/>
 
         <AddPlacePopup
-        buttonText={buttonProfileText}
         isOpened={isAddPlacePopupOpen}
         onClose={closeAllPopups} 
         onOverlayClick = {handleOverlayClick}

@@ -11,7 +11,7 @@ class AuthApi {
     })
   }
 
-  register (email, password) {
+  register ({email, password}) {
     return this._request(`${this._url}/signup`, {
       method: 'POST',
       headers: {
@@ -37,7 +37,6 @@ class AuthApi {
   getToken (token) {
     return this._request(`${this._url}/users/me`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
         "Authorization" : `Bearer ${token}`
@@ -47,10 +46,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi ({
-  baseUrl: "http://127.0.0.1:3001"
+  baseUrl: "https://api.mesto.alexkosova.nomoredomains.work"
 })
 
 export default authApi
-
-// "https://auth.nomoreparties.co"
-// http://mesto.alexkosova.nomoredomains.work/"
