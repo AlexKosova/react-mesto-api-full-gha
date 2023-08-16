@@ -20,4 +20,4 @@ cardRouter.put('/:cardId/likes', putLike);
 
 cardRouter.delete('/:cardId/likes', deleteLike);
 
-module.exports = cardRouter
+module.exports = cardRouter;
