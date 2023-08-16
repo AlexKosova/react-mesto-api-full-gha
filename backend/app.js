@@ -1,18 +1,26 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const BodyParser = require('body-parser');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const cors = require('cors');
 const errorMiddlware = require('./middlewares/errors');
 const routes = require('./routes/routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const allowedCors = [
   'http://mesto.alexkosova.nomoredomains.work/',
   'https://mesto.alexkosova.nomoredomains.work/',
   'http://127.0.0.1:3001',
-  'http://localhost:3001',
 ];
 
 const { PORT = 3001 } = process.env;
 const app = express();
+
+app.use(BodyParser.json());
+app.use(cors());
 
 app.use((req, res, next) => {
   const { origin } = req.headers;

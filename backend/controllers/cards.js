@@ -10,7 +10,7 @@ const createCard = (req, res, next) => {
     owner: req.user._id,
   };
   Card.create(newCard)
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     // eslint-disable-next-line consistent-return
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -52,7 +52,7 @@ const putLike = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Данные не найдены');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch(next);
 };
@@ -68,7 +68,7 @@ const deleteLike = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Данные не найдены');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch(next);
 };

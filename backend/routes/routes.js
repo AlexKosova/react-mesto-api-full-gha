@@ -1,29 +1,26 @@
 const routes = require('express').Router();
-const { celebrate, Joi } = require('celebrate');
+const { celebrate, Joi, Segments } = require('celebrate');
 const NotFoundError = require('../errors/NotFoundError');
 const userRouter = require('./users');
 const cardRouter = require('./cards');
 const auth = require('../middlewares/auth');
 const { login, createUser } = require('../controllers/users');
 
-// routes.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
+routes.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
-routes.post('/api/signin', celebrate({
-  body: Joi.object().keys({
+routes.post('/signin', celebrate({
+  [Segments.BODY]: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(2),
   }),
 }), login);
 
-routes.post('/api/signup', celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    avatar: Joi.string().pattern(/^https?:\/\/(?:www\.)?[a-zA-Z0-9а-яА-Я-._~:/?#[\]@!$&'()*+,;=]+/im),
+routes.post('/signup', celebrate({
+  [Segments.BODY]: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(2),
   }),
@@ -31,8 +28,8 @@ routes.post('/api/signup', celebrate({
 
 routes.use(auth);
 
-routes.use('/api/users', userRouter);
-routes.use('/api/cards', cardRouter);
+routes.use('/users', userRouter);
+routes.use('/cards', cardRouter);
 
 routes.use(() => {
   throw new NotFoundError('Страница не найдена');

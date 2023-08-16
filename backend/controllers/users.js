@@ -4,7 +4,6 @@ const User = require('../models/user');
 const RegisterError = require('../errors/RegisterError');
 const NotFoundError = require('../errors/NotFoundError');
 const InvalidError = require('../errors/InvalidError');
-const { JWT_KEY } = require('../utils/constants');
 
 const getUsers = (req, res, next) => {
   User.find({})
@@ -31,6 +30,7 @@ const createUser = (req, res, next) => {
     .then((user) => res.send(user.toJSON()))
     // eslint-disable-next-line consistent-return
     .catch((err) => {
+      console.log(err);
       if (err.code === 11000) {
         return next(new RegisterError('Пользователь уже существует'));
       }
@@ -45,16 +45,12 @@ const login = (req, res, next) => {
 
   User.findByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, JWT_KEY, {
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY, {
         expiresIn: '7d',
       });
-    //   res.cookie('jwt', token, {
-    //     maxAge: 3600000 * 24 * 7,
-    //     httpOnly: true,
-    //   }).send({ token });
-    });
-    res.send({ token })
-    .catch(next)
+      res.send({ token });
+    })
+    .catch(next);
 };
 
 const getUserById = (req, res, next) => {
@@ -77,7 +73,7 @@ const getUser = (req, res, next) => {
       if (!user) {
         return next(new NotFoundError('Пользователь не найден'));
       }
-      return res.send({ data: user });
+      return res.send(user);
     })
     .catch(next);
 };
@@ -90,7 +86,7 @@ const updateProfile = (req, res, next) => {
   };
   User.findByIdAndUpdate(_id, data, { new: true, runValidators: true })
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -104,7 +100,7 @@ const updateAvatar = (req, res, next) => {
   const { _id } = req.user;
   const data = { avatar: req.body.avatar };
   User.findByIdAndUpdate(_id, data, { runValidators: true, new: true })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new InvalidError('Неверная ссылка'));

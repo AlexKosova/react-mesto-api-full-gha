@@ -5,14 +5,11 @@ const ERROR_AUTH = 401;
 const ERROR_REGISTER = 409;
 const ERROR_FORBIDDEN = 403;
 
-const JWT_KEY = 'secretKey';
-
 module.exports = {
   ERROR_INVALID,
   ERROR_NOT_FOUND,
   ERROR_SERVER,
   ERROR_AUTH,
   ERROR_REGISTER,
-  JWT_KEY,
   ERROR_FORBIDDEN,
 };
