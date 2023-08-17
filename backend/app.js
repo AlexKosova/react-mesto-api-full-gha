@@ -2,7 +2,6 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-require('dotenv').config();
 // eslint-disable-next-line import/no-extraneous-dependencies
 const BodyParser = require('body-parser');
 // eslint-disable-next-line import/no-extraneous-dependencies
