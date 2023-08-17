@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.80.225
+IP 51.250.80.225
 
 Frontend https://mesto.alexkosova.nomoredomains.work
 

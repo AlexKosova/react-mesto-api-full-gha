@@ -6,11 +6,11 @@ const cardRouter = require('./cards');
 const auth = require('../middlewares/auth');
 const { login, createUser } = require('../controllers/users');
 
-routes.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+// routes.get('/crash-test', () => {
+//   setTimeout(() => {
+//     throw new Error('Сервер сейчас упадёт');
+//   }, 0);
+// });
 
 routes.post('/signin', celebrate({
   [Segments.BODY]: Joi.object().keys({
