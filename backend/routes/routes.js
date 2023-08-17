@@ -13,14 +13,14 @@ routes.get('/crash-test', () => {
 });
 
 routes.post('/signin', celebrate({
-  [Segments.BODY]: Joi.object().keys({
+  body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(2),
   }),
 }), login);
 
 routes.post('/signup', celebrate({
-  [Segments.BODY]: Joi.object().keys({
+  body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(2),
     name: Joi.string().min(2).max(30),
@@ -34,8 +34,8 @@ routes.use(auth);
 routes.use('/users', userRouter);
 routes.use('/cards', cardRouter);
 
-routes.use(() => {
-  throw new NotFoundError('Страница не найдена');
+routes.use('*', (req, res, next) => {
+  next(NotFoundError('Страница не найдена'));
 });
 
 module.exports = routes;
