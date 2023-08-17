@@ -34,8 +34,8 @@ routes.use(auth);
 routes.use('/users', userRouter);
 routes.use('/cards', cardRouter);
 
-routes.use('*', (req, res, next) => {
-  next(NotFoundError('Страница не найдена'));
+routes.use(() => {
+  throw new NotFoundError('Страница не найдена');
 });
 
 module.exports = routes;
