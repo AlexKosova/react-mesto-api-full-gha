@@ -11,13 +11,13 @@ const routes = require('./routes/routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const allowedCors = [
-  'http://mesto.alexkosova.nomoredomains.work/',
-  'https://mesto.alexkosova.nomoredomains.work/',
+  'http://mesto.alexkosova.nomoredomains.work',
+  'https://mesto.alexkosova.nomoredomains.work',
   'http://127.0.0.1:3001',
   'http://localhost:3000',
 ];
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 
 app.use(BodyParser.json());
