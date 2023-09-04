@@ -15,6 +15,7 @@ const allowedCors = [
   'https://mesto.alexkosova.nomoredomains.work',
   'http://127.0.0.1:3001',
   'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 const { PORT = 3000 } = process.env;
