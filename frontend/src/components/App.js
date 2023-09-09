@@ -50,6 +50,7 @@ export default function App () {
       localStorage.setItem('jwt', res.token);
       setLoggedIn(true)
       setEmail(data.email)
+      setCurrentUser(data)
       setSuccessStatus(true)
       navigate('/')
     })
