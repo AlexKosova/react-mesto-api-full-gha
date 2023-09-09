@@ -58,6 +58,12 @@ export default function App () {
     return localStorage.getItem('jwt')
   }
 
+  function handleSignOut() {
+      localStorage.removeItem("jwt");
+      setLoggedIn(false);
+      navigate('/sign-in');
+  }
+
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
 
@@ -199,7 +205,7 @@ export default function App () {
   return (
     <div className="page">
       <CurrentUserContext.Provider value = {currentUser}>
-        <Header email={email}/>
+        <Header email={email} onLogout={handleSignOut}/>
         <Routes>
           <Route path="/" element={
             <ProtectedRoute 

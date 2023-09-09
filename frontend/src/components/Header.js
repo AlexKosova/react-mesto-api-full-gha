@@ -1,13 +1,13 @@
 import logo from '../images/logo.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export default function Header ({email}) {
-  const navigate = useNavigate();
+export default function Header ({email, onLogout}) {
+  // const navigate = useNavigate();
 
-  function onLogout () {
-    localStorage.removeItem('jwt')
-    navigate('/sign-in')
-  }
+  // function onLogout () {
+  //   localStorage.removeItem('jwt')
+  //   navigate('/sign-in')
+  // }
   return (
     <header className="header">
         <img className="header__logo" src={logo} alt="Место"/>
