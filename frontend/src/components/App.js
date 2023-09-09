@@ -50,7 +50,7 @@ export default function App () {
       localStorage.setItem('jwt', res.token);
       setLoggedIn(true)
       setEmail(data.email)
-      setCurrentUser(data)
+      api.getUserInfo().then(data => setCurrentUser(data))
       setSuccessStatus(true)
       navigate('/')
     })
@@ -86,7 +86,7 @@ export default function App () {
         console.log(err);
       })
     }
-  }, [])
+  }, [navigate])
 
   React.useEffect(() => {
     if (isLoggedIn) {
