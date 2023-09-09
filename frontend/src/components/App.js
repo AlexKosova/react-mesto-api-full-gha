@@ -26,6 +26,11 @@ export default function App () {
   const navigate = useNavigate();
   const [isInfoTooltipOpen, setInfoTooltipOpen] = React.useState(false)
   const [successStatus, setSuccessStatus] = React.useState(false)
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [cards, setCards] = React.useState([]);
+
+  const [buttonText, setButtonText] = React.useState('Создать')
+  const [buttonProfileText, setButtonProfileText] = React.useState('Сохранить')
 
   function handleRegister (data) {
     authApi.register(data).then(() => {
@@ -61,14 +66,9 @@ export default function App () {
   function handleSignOut() {
       localStorage.removeItem("jwt");
       setLoggedIn(false);
+      setCurrentUser({});
       navigate('/sign-in');
   }
-
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [cards, setCards] = React.useState([]);
-
-  const [buttonText, setButtonText] = React.useState('Создать')
-  const [buttonProfileText, setButtonProfileText] = React.useState('Сохранить')
 
   React.useEffect(() => {
     const token = getUserToken();
@@ -76,8 +76,8 @@ export default function App () {
       authApi.getToken(token).then((res) => {
         if (res) {
           setLoggedIn(true)
-          navigate('/')
           setEmail(res.email)
+          navigate('/')
         }
       })
       .catch((err) => {
