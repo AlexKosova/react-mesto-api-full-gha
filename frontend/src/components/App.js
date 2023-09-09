@@ -61,7 +61,6 @@ export default function App () {
   function handleSignOut() {
       localStorage.removeItem("jwt");
       setLoggedIn(false);
-      setCurrentUser({});
       navigate('/sign-in');
   }
 
