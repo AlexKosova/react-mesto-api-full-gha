@@ -48,8 +48,9 @@ export default function App () {
   function handleLogin (data) {
     authApi.login(data).then((res) => {
       localStorage.setItem('jwt', res.token);
-      setLoggedIn(true);
+      setLoggedIn(true)
       setEmail(data.email)
+      setSuccessStatus(true)
       navigate('/')
     })
     .catch((err) => {
