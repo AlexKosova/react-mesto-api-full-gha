@@ -90,7 +90,7 @@ export default function App () {
 
   React.useEffect(() => {
     if (isLoggedIn) {
-        Promise.all([api.getUserInfo(), api.getInitialCards()])
+      api.getInitialCards().getUserInfo()
       .then(([userData, items]) => {
         setCurrentUser(userData)
         setCards(items.reverse())
