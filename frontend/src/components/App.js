@@ -86,46 +86,22 @@ export default function App () {
         console.log(err);
       })
     }
-  }, [navigate])
+  }, [])
 
   React.useEffect(() => {
     if (isLoggedIn) {
-      api.getUserInfo()
-      .then((userData) => {
-        setCurrentUser(userData);
+        Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, items]) => {
+        setCurrentUser(userData)
+        setCards(items.reverse())
+        setLoggedIn(true)
+        navigate('/')
       })
       .catch((err) => {
         console.log(err);
-      });
-    }
-  }, [isLoggedIn]);
-
-  React.useEffect(() => {
-    if (isLoggedIn) {
-      api.getInitialCards()
-      .then((items) => {
-        setCards(items);
       })
-      .catch((err) => {
-        console.log(err);
-      });
     }
-  }, [isLoggedIn]);
-
-  // React.useEffect(() => {
-  //   if (isLoggedIn) {
-  //       Promise.all([api.getUserInfo(), api.getInitialCards()])
-  //     .then(([userData, items]) => {
-  //       setCurrentUser(userData)
-  //       setCards(items.reverse())
-  //       setLoggedIn(true)
-  //       navigate('/')
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  //   }
-  // }, [isLoggedIn])
+  }, [isLoggedIn])
 
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
   function handleEditProfileClick () {
