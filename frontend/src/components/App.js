@@ -69,6 +69,10 @@ export default function App () {
     if (token) {
       authApi.getToken(token).then((res) => {
         if (res) {
+          Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, items]) => {
+        setCurrentUser(userData)
+        setCards(items.reverse())});
           setLoggedIn(true)
           navigate('/')
           setEmail(res.email)
