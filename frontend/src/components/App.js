@@ -65,21 +65,6 @@ export default function App () {
   const [buttonProfileText, setButtonProfileText] = React.useState('Сохранить')
 
   React.useEffect(() => {
-    if (isLoggedIn) {
-        Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, items]) => {
-        setCurrentUser(userData)
-        setCards(items.reverse())
-        setLoggedIn(true)
-        navigate('/')
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-    }
-  }, [isLoggedIn])
-
-  React.useEffect(() => {
     const token = getUserToken();
     if (token) {
       authApi.getToken(token).then((res) => {
@@ -94,6 +79,21 @@ export default function App () {
       })
     }
   }, [navigate])
+
+  React.useEffect(() => {
+    if (isLoggedIn) {
+        Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, items]) => {
+        setCurrentUser(userData)
+        setCards(items.reverse())
+        setLoggedIn(true)
+        navigate('/')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+  }, [isLoggedIn])
 
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
   function handleEditProfileClick () {
